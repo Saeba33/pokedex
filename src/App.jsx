@@ -32,33 +32,19 @@ const pokemonList = [
     },
   ];
 
-function App() {
-
-const [pokemonIndex, setPokemonIndex] = useState(0);
-
-const handlePrecedent = () => {
-  if (pokemonIndex > 0) {
-    setPokemonIndex(pokemonIndex -1);
+  function App() {
+    const [selectedPokemon, setSelectedPokemon] = useState(pokemonList[0]); // Initialisé avec le premier élément du tableau
+  
+    const handlePokemonSelection = (pokemon) => {
+      setSelectedPokemon(pokemon);
+    };
+  
+    return (
+      <>
+        <PokemonCard pokemon={selectedPokemon} />
+        <NavBar pokemonList={pokemonList} selectedPokemon={handlePokemonSelection} />
+      </>
+    );
   }
-};
-
-const handleSuivant = () => {
-  if (pokemonIndex < pokemonList.length -1) {
-    setPokemonIndex(pokemonIndex +1);
-  }
-};
-
-return(
-    <>
-      <PokemonCard pokemon={pokemonList[pokemonIndex]}/>
-      <NavBar
-       handlePrecedent={handlePrecedent}
-       handleSuivant={handleSuivant}
-       precedentHidden={pokemonIndex===0}
-       suivantHidden={pokemonIndex===pokemonList.length -1}
-      />
-    </>
-  );
-}
-
-export default App
+  
+  export default App;

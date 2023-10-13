@@ -1,11 +1,13 @@
-const NavBar = ({handlePrecedent, handleSuivant, precedentHidden, suivantHidden}) => {
+function NavBar({ pokemonList, selectedPokemon }) {
     return (
-     <>
-        <button onClick={handlePrecedent} style={{ display: precedentHidden ? 'none' : 'inline-block' }}>Précédent</button>
-        <button onClick={handleSuivant} style={{ display: suivantHidden ? 'none' : 'inline-block' }}>Suivant</button>
-     </>
-    
+      <>
+        {pokemonList.map((pokemon, index) => (
+          <button key={index} onClick={() => selectedPokemon(pokemon)}>
+            {pokemon.name}
+          </button>
+        ))}
+      </>
     );
-};
-
-export default NavBar;
+  }
+  
+  export default NavBar;
