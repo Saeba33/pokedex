@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -33,12 +34,19 @@ const pokemonList = [
   ];
 
   function App() {
+    useEffect(
+      () =>  {
+        alert("hello pokemon trainer :)") ;
+      }, 
+      []
+   );
+
     const [selectedPokemon, setSelectedPokemon] = useState(pokemonList[0]); // Initialisé avec le premier élément du tableau
   
     const handlePokemonSelection = (pokemon) => {
       setSelectedPokemon(pokemon);
     };
-  
+
     return (
       <>
         <PokemonCard pokemon={selectedPokemon} />
